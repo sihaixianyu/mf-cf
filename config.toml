@@ -1,0 +1,15 @@
+# Dataset
+neg_num = 1
+test_neg_num = 100
+
+# Model
+latent_dim = 30
+
+# Train
+learning_rate = 1e-3
+batch_size = 1024
+epoch_num = 100
+
+# Test
+topk = 10
+
