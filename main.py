@@ -13,6 +13,7 @@ from trainer import Trainer
 from util import print_res, load_data
 
 root = './'
+# root = 'drive/MyDrive/mf/'
 
 if __name__ == '__main__':
     config = toml.load(os.path.join(root, 'config.toml'))
@@ -21,12 +22,13 @@ if __name__ == '__main__':
     train_dataset = TrainDataset(pos_train_arr, info_dict, neg_num=config['neg_num'])
     test_dataset = TestDataset(pos_test_arr, info_dict, neg_dict)
 
+    # Warning: we can't not shuffle the test data, because it has static oreder for each user
     train_loader = DataLoader(train_dataset, batch_size=config['batch_size'], shuffle=True)
     test_loader = DataLoader(test_dataset, batch_size=config['test_neg_num'], shuffle=False)
 
     device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
     model = MF(info_dict['user_num'], info_dict['item_num'], config['latent_dim'], device)
-    optimizer = torch.optim.Adam(model.parameters(), lr=config['learning_rate'])
+    optimizer = torch.optim.Adam(model.parameters(), lr=config['learning_rate'], weight_decay=config['lambda'])
 
     trainer = Trainer(train_loader, model, optimizer)
     evaluator = Evaluator(test_loader, model, topk=config['topk'])

@@ -6,9 +6,10 @@ test_neg_num = 100
 latent_dim = 30
 
 # Train
-learning_rate = 1e-3
 batch_size = 1024
-epoch_num = 100
+epoch_num = 50
+learning_rate = 1e-3
+lambda = 1e-3
 
 # Test
 topk = 10
