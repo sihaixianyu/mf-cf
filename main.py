@@ -55,5 +55,5 @@ if __name__ == '__main__':
             best_epoch['hit'] = hit
             best_epoch['ndcg'] = ndcg
 
-    print_res('Best Epoch=%.4f, Hit=%.4f, NDCG=%.4f,'
+    print_res('Best Epoch=%3d, Hit=%.4f, NDCG=%.4f'
               % (best_epoch['epoch'], best_epoch['hit'], best_epoch['ndcg']))
