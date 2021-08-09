@@ -13,7 +13,7 @@ from trainer import Trainer
 from util import print_res, load_data
 
 root = './'
-# root = 'drive/MyDrive/mf/'
+# root = 'drive/MyDrive/mf-brp/'
 
 if __name__ == '__main__':
     config = toml.load(os.path.join(root, 'config.toml'))

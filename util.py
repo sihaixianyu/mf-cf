@@ -31,10 +31,10 @@ def check_file(*files: str):
             raise FileNotFoundError('{} not exist, please run process script!'.format(file))
 
 
-def print_res(content: str):
-    print('-' * 100)
+def print_res(content: str, split='-', num=75):
+    print(split * num)
     print(content)
-    print('-' * 100)
+    print(split * num)
 
 
 if __name__ == '__main__':

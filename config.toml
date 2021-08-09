@@ -1,13 +1,13 @@
 # Dataset
-neg_num = 1
+neg_num = 5
 test_neg_num = 100
 
 # Model
-latent_dim = 30
+latent_dim = 300
 
 # Train
-batch_size = 1024
-epoch_num = 50
+batch_size = 512
+epoch_num = 300
 learning_rate = 1e-3
 lambda = 1e-3
 
