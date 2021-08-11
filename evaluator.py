@@ -2,11 +2,11 @@ import numpy as np
 import torch
 from torch.utils.data import DataLoader
 
-from model import MF
+from model import BrpMF
 
 
 class Evaluator:
-    def __init__(self, loader: DataLoader, model: MF, topk=10):
+    def __init__(self, loader: DataLoader, model: BrpMF, topk=10):
         self.loader = loader
         self.model = model
         self.topk = topk

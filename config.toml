@@ -1,13 +1,15 @@
 # Dataset
-neg_num = 5
+data_name = 'ml-1m'
+neg_num = 4
 test_neg_num = 100
+num_workers = 2
 
 # Model
 latent_dim = 300
 
 # Train
 batch_size = 512
-epoch_num = 300
+epoch_num = 20
 learning_rate = 1e-3
 lambda = 1e-3
 

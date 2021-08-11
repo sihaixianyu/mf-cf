@@ -4,9 +4,9 @@ import torch.nn as nn
 from torch import LongTensor
 
 
-class MF(nn.Module):
+class BrpMF(nn.Module):
     def __init__(self, user_num: int, item_num: int, latent_dim: int, device='cpu'):
-        super(MF, self).__init__()
+        super(BrpMF, self).__init__()
         self.embed_user = nn.Embedding(user_num, latent_dim)
         self.embed_item = nn.Embedding(item_num, latent_dim)
 

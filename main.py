@@ -8,7 +8,7 @@ from torch.utils.data import DataLoader
 from dataset import TestDataset
 from dataset import TrainDataset
 from evaluator import Evaluator
-from model import MF
+from model import BrpMF
 from trainer import Trainer
 from util import print_res, load_data
 
@@ -17,7 +17,10 @@ root = './'
 
 if __name__ == '__main__':
     config = toml.load(os.path.join(root, 'config.toml'))
-    pos_train_arr, pos_test_arr, neg_dict, info_dict = load_data(os.path.join(root, 'data/', 'ml-1m/'))
+    device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
+
+    data_dir = os.path.join(root, 'data/', config['data_name'])
+    pos_train_arr, pos_test_arr, neg_dict, info_dict = load_data(data_dir)
 
     train_dataset = TrainDataset(pos_train_arr, info_dict, neg_num=config['neg_num'])
     test_dataset = TestDataset(pos_test_arr, info_dict, neg_dict)
@@ -26,8 +29,7 @@ if __name__ == '__main__':
     train_loader = DataLoader(train_dataset, batch_size=config['batch_size'], shuffle=True)
     test_loader = DataLoader(test_dataset, batch_size=config['test_neg_num'], shuffle=False)
 
-    device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
-    model = MF(info_dict['user_num'], info_dict['item_num'], config['latent_dim'], device)
+    model = BrpMF(info_dict['user_num'], info_dict['item_num'], config['latent_dim'], device)
     optimizer = torch.optim.Adam(model.parameters(), lr=config['learning_rate'], weight_decay=config['lambda'])
 
     trainer = Trainer(train_loader, model, optimizer)

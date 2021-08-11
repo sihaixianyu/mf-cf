@@ -2,11 +2,11 @@ import numpy as np
 from torch.optim import Optimizer
 from torch.utils.data import DataLoader
 
-from model import MF
+from model import BrpMF
 
 
 class Trainer:
-    def __init__(self, loader: DataLoader, model: MF, optimizer: Optimizer):
+    def __init__(self, loader: DataLoader, model: BrpMF, optimizer: Optimizer):
         self.loader = loader
         self.model = model
         self.optimizer = optimizer
