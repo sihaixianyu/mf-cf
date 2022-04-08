@@ -1,1 +1,1 @@
-# MF-CF Collaborative Filtering Algorithm Using Vanilla Matrix Factorization
+# MF-CF Vanilla Matrix Factorization For Collaborative Filtering
