@@ -1,1 +1,1 @@
-# MF-CF 基于矩阵分解的协同过滤算法
+# MF-CF Collaborative Filtering Algorithm Using Vanilla Matrix Factorization
